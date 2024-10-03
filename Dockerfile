@@ -1,8 +1,10 @@
-# Use Amazon Linux 2 as the base for AWS Lambda
-FROM public.ecr.aws/lambda/java:17
+FROM public.ecr.aws/lambda/java:21
+  
+# Copy function code and runtime dependencies from Maven layout
+COPY target/classes ${LAMBDA_TASK_ROOT}
+COPY target/dependency/* ${LAMBDA_TASK_ROOT}/lib/
+    
+# Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
+CMD [ "com.example.lambdatemplate.App::handleRequest"]
 
-# Copy the built JAR file from Maven to the Lambda container
-COPY target/demo-0.0.1-SNAPSHOT.jar ${LAMBDA_TASK_ROOT}/app.jar
-
-# Set the Spring Cloud Function adapter as the entry point
-CMD ["-cp", "/var/task/app.jar", "com.example.demo.LambdaHandler"]
+#Compile project with mvn compile dependency:copy-dependencies -DincludeScope=runtime
