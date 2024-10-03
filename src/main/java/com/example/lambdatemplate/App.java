@@ -37,6 +37,6 @@ public class App implements RequestHandler<Object, Object> {
         messRound.yessir();
         templateService.get();
         // TODO: invoking the api call using s3Client.
-        return input;
+        return "Success";
     }
 }
