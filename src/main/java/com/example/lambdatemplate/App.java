@@ -28,7 +28,8 @@ public class App implements RequestHandler<Object, Object> {
         s3Client = DependencyFactory.s3Client();
         // Consider invoking a simple api here to pre-warm up the application, eg: dynamodb#listTables
         messRound = new MessRound();
-        templateService = new TemplateService(null);
+        RestTemplate restTemplate = new RestTemplate();
+        templateService = new TemplateService(restTemplate);
     }
 
     @Override
