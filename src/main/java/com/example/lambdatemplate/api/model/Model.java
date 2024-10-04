@@ -11,5 +11,4 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Model {
     private String fact;
-    private int length;
 }

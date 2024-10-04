@@ -16,7 +16,7 @@ import com.example.lambdatemplate.api.model.Model;
 @Service
 public class ExternalApiCall {
 
-    RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
     private static final Logger log = LoggerFactory.getLogger(ExternalApiCall.class);
     private final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -25,12 +25,11 @@ public class ExternalApiCall {
     }
 
     public Object getFact() throws JsonMappingException, JsonProcessingException{
-        String url = "https://catfact.ninja/fact?max_length=140";
+        String url = "https://api.api-ninjas.com/v1/facts";
         Object result = null;
         try{
-            log.info("Request made to external API: " + restTemplate.getForObject(url, String.class)); //Check the outbound API Request
-            String jsonResponse = restTemplate.getForObject(url, String.class);
-            JsonNode jsonNode = objectMapper.readTree(jsonResponse);
+            String jsonResponse = restTemplate.getForObject(url, String.class); //This Actually Executes the API Call
+            JsonNode jsonNode = objectMapper.readTree(jsonResponse); //Put the Response to an object for us to check if array or object
             if (jsonNode.isArray()){ //Get Response if List
                 result = objectMapper.readValue(jsonResponse, new TypeReference<List<Model>>() {});
                 log.info("Response is a List: " + result);
