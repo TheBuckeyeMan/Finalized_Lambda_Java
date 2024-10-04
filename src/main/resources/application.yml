@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: template
+  main:
+    lazy-initialization: true
+    web-application-type: none  # Disable the web server Disables tomcat
+api:  
+  key: ${API_KEY}

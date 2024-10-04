@@ -6,13 +6,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
 import com.example.lambdatemplate.api.Interceptor.ToExternalLoggingInterceptor;
+
+import jakarta.annotation.PostConstruct;
+
 import com.example.lambdatemplate.api.Interceptor.IncommingLoggingInterceptor;
 import com.example.lambdatemplate.api.Interceptor.ApiKeyInterceptor;
 
 //The entire purpose of the configuration file is to simply configure ther RestTemplate as a bean in the application s it can be autowired
 @Configuration
 public class AppConfig {
-
+    @PostConstruct
+    public void init(){
+        System.out.println("AppConfi has been initialized.");
+    }
     @Value("${api.key}")
     private String apiKey;
 
