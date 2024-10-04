@@ -1,7 +1,7 @@
 
 package com.example.lambdatemplate;
 
-import com.example.lambdatemplate.api.LambdaHandler;
+import com.example.lambdatemplate.api.Handler.LambdaHandler;
 
 import software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider;
 import software.amazon.awssdk.http.crt.AwsCrtAsyncHttpClient;

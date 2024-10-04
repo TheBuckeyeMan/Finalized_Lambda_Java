@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.example.lambdatemplate.api.LambdaHandler;
+import com.example.lambdatemplate.api.Handler.LambdaHandler;
 
 public class AppTest {
 
