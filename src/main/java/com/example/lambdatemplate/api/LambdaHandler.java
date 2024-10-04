@@ -1,15 +1,13 @@
-package com.example.lambdatemplate;
+package com.example.lambdatemplate.api;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.example.lambdatemplate.service.MessRound;
 
-public class App implements RequestHandler<Object, Object> {
+public class LambdaHandler implements RequestHandler<Object, Object> {
     private MessRound messRound;
 
-
-    public App() {
-
+    public LambdaHandler() {
         messRound = new MessRound();
     }
 
