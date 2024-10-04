@@ -1,4 +1,4 @@
-
+//THIS CLASS IS NOT REQUIRED
 package com.example.lambdatemplate;
 
 import com.example.lambdatemplate.api.Handler.LambdaHandler;
