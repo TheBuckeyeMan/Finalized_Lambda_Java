@@ -12,7 +12,7 @@ public class LambdaHandler implements RequestHandler<Object, Object> {
 
     public LambdaHandler() {
         //check if we need thease two later
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(LambdaConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(LambdaConfig.class); //Set the application Configuration
         context.scan("com.example.lambdatemplate"); //Manually Tell Spring to Scan all contents of the project for Dependency Injection
         externalApiCall = context.getBean(ExternalApiCall.class);
     }

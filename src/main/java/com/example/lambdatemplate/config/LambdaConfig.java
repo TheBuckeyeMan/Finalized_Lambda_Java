@@ -5,6 +5,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 import com.example.lambdatemplate.api.interceptor.ApiKeyInterceptor;
+import com.example.lambdatemplate.api.interceptor.IncommingLoggingInterceptor;
+import com.example.lambdatemplate.api.interceptor.ToExternalLoggingInterceptor;
+
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -20,11 +23,21 @@ public class LambdaConfig {
     public ApiKeyInterceptor apiKeyInterceptor(){
         return new ApiKeyInterceptor(apikey);
     }
+
+    @Bean
+    public IncommingLoggingInterceptor incommingLoggingInterceptor(){
+        return new IncommingLoggingInterceptor();
+    }
+
+    @Bean
+    public ToExternalLoggingInterceptor toExternalLoggingInterceptor(){
+        return new ToExternalLoggingInterceptor();
+    }
     
     @Bean
-    public RestTemplate restTemplate(ApiKeyInterceptor apiKeyInterceptor){
+    public RestTemplate restTemplate(ToExternalLoggingInterceptor toExternalLoggingInterceptor, ApiKeyInterceptor apiKeyInterceptor,IncommingLoggingInterceptor incommingLoggingInterceptor){
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.setInterceptors(Arrays.asList(apiKeyInterceptor));
+        restTemplate.setInterceptors(Arrays.asList(incommingLoggingInterceptor, apiKeyInterceptor, toExternalLoggingInterceptor));
         return restTemplate;
     }
 }
