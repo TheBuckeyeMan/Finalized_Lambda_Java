@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.List;
 import java.util.function.Supplier;
 
-
 //Entire purpose of service is to consume the data from api
 @Service
 @RequiredArgsConstructor
@@ -22,7 +21,7 @@ public class TemplateService implements Supplier<List<Model>>{
     private final ObjectMapper objectMapper = new ObjectMapper();//Add in object for the JSON Response Object
 
     public List<Model> get(){
-        String url = "https://api.api-ninjas.com/v1/facts";
+        String url = "<Your URL Here>";
 
         List<Model> model = null;
         try {

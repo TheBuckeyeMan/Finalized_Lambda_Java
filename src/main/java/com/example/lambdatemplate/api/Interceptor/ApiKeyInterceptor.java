@@ -5,7 +5,6 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 
 //Add to Request Headers
@@ -21,7 +20,7 @@ public class ApiKeyInterceptor implements ClientHttpRequestInterceptor{
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
-        request.getHeaders().set("X-Api-Key", apiKey);
+        request.getHeaders().set("<Headder Name>", apiKey);
         return execution.execute(request, body);
     }
 }
