@@ -1,13 +1,15 @@
 
 package com.example.lambdatemplate;
 
+import com.example.lambdatemplate.api.Handler.LambdaHandler;
+
 import software.amazon.awssdk.auth.credentials.EnvironmentVariableCredentialsProvider;
 import software.amazon.awssdk.http.crt.AwsCrtAsyncHttpClient;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3AsyncClient;
 
 /**
- * The module containing all dependencies required by the {@link App}.
+ * The module containing all dependencies required by the {@link LambdaHandler}.
  */
 public class DependencyFactory {
 
